@@ -37,9 +37,9 @@
         vertical-align: top
     }
 </style>
-<div ng-controller="DoomsdayController">
+<div ng-controller="DoomsdayController" >
     <h1>{{ headline }}</h1>
-    <table class="tg">
+    <table class="tg" ng-show="response">
         <tr>
             <th class="tg-yw4l">Closest Miss</th>
             <th class="tg-yw4l">Fastest NEO</th>
@@ -51,8 +51,6 @@
             <td class="tg-yw4l"></td>
         </tr>
     </table>
-
-    <form action="#">
 
         <label>Select a date for your search to end on<br></label>
         <datepicker>
@@ -73,12 +71,12 @@
             </select>
         </label>
         <input type="button" ng-click="search()" value="Search">
-    </form>
-    <ul>
-        <li>Show the list of NEO</li>
-        <li ng-repeat="object in near_earth_objects">{{near_earth_objects}}</li>
-    </ul>
 
+    <ul ng-show="response">
+        <li>Show the list of NEO</li>
+        <li ng-repeat="name in response.near_earth_objects">Name: {{response.near_earth_objects[0][name]}}</li>
+    </ul>
+    <p> {{ response.near_earth_objects }}</p>
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angularjs-datepicker/src/js/angular-datepicker.js"></script>
     <script src="ngapp.js"></script>
