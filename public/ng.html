@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <link href="../node_modules/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css"/>
+    <title>Title</title>
+</head>
+<body>
+<style type="text/css">
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 10px 20px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+    }
+
+    .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 10px 20px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+    }
+
+    .tg .tg-yw4l {
+        vertical-align: top
+    }
+</style>
+<div ng-controller="DoomsdayController">
+    <h1>{{ headline }}</h1>
+    <table class="tg">
+        <tr>
+            <th class="tg-yw4l">Closest Miss</th>
+            <th class="tg-yw4l">Fastest NEO</th>
+            <th class="tg-yw4l">Largest NEO</th>
+        </tr>
+        <tr>
+            <td class="tg-yw4l"></td>
+            <td class="tg-yw4l"></td>
+            <td class="tg-yw4l"></td>
+        </tr>
+    </table>
+
+    <form action="#">
+
+        <label>Select a date for your search to end on<br></label>
+        <datepicker>
+            <input date-set="{{date}}" placeholder="date input" type="text" date-format="yyyy-MM-dd" ng-model="date" type="text"/>
+        </datepicker>
+        <br>
+        <p>By pressing "Search" the application will list Near Earth Objects until {{ date | date:"yyyy-MM-dd" }} </p><br>
+
+        <label>Select number of days to bring back in your search<br>
+            <select name="number_days" id="number_days" ng-model="number_days">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option selected="selected" value=7>7</option>
+            </select>
+        </label>
+        <input type="button" ng-click="search()" value="Search">
+    </form>
+    <ul>
+        <li>Show the list of NEO</li>
+        <li ng-repeat="object in near_earth_objects">{{near_earth_objects}}</li>
+    </ul>
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+    <script src="ngapp.js"></script>
+</div>
+</body>
+</html>
