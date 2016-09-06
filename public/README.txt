@@ -5,11 +5,13 @@ javascript code before I even began. When I finally set out to begin the work I 
 I know and work in AngularJS and then in refactoring slip in some React components.
 I never got that far.
 
+The root file here is 'ng.html'.
 
-Currently pressing the search button before changng the date will bring back response data.
+
+Currently pressing the search button before changing the date will bring back response data.
 I had issues converting selected dates into a format I could
 use in the http call. The bootstrap date picker would not bind to the $rootscope.
-I know this is becouse its got its own "parent" scope but it was taking too long to
+I know this is because its got its own "parent" scope but it was taking too long to
  resolve so I tried a datepicker directive that would bind to the scope but would not
   keep its formating. A bug I suppose.
 
